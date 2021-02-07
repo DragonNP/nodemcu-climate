@@ -14,8 +14,8 @@
 #define OPTIMAL_HUM 60               // threshold for all flowers (average)
 #define SOIL_SENSOR_OUTPUT A0
 #define SOIL_SENSOR_PIN 2
-#define MIN_VALUE 240                // minimum value (in air)
-#define MAX_VALUE 710                // minimum value (in water)
+#define MIN_VALUE 240                // minimum value (in water)
+#define MAX_VALUE 710                // maximum value (in air)
 
 // -------------- PUMP --------------
 #define PUMP_PIN 3
