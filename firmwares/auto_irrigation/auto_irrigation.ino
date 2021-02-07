@@ -3,12 +3,8 @@
   The source code on GitHub: https://github.com/DragonNP/smart-climate
   Author: DragonNP, 2020
   https://github.com/DragonNP/
-
-  Libs link:
-  ------------------------------------------------------
-  GyverTimer        -    https://github.com/AlexGyver/GyverLibs/tree/master/GyverTimer
-  ------------------------------------------------------
 */
+
 // ============ SETTINGS ============
 // --------- Soil Humidity ----------
 #define OPTIMAL_HUM 60               // threshold for all flowers (average)
@@ -23,15 +19,6 @@
 //-------------- SERIAL -------------
 #define SPEED_SERIAL 9600
 // ============ SETTINGS ============
-
-// ============== LIBS ==============
-#include <GyverTimer.h>
-// ============== LIBS ==============
-
-// ============== VARS ==============
-// Timers
-GTimer timerReader(MS);
-// ============== VARS ==============
 
 void setup() {
   // Init serial
@@ -64,7 +51,7 @@ void loop() {
   }
   Serial.println("============================");
   
-  delay(600);
+  delay(600 + 58000 + 1740000);
 }
 
 int get_soil_humidity() {
