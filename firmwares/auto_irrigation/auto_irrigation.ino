@@ -1,24 +1,24 @@
 /*
-  Sketch for the project "Smart Climate"
-  The source code on GitHub: https://github.com/DragonNP/smart-climate
-  Author: DragonNP, 2020
+  Скетч для проекта "Smart Climate"
+  Исходный код на GitHub: https://github.com/DragonNP/smart-climate
+  Автор: DragonNP, 2021
   https://github.com/DragonNP/
 */
 
-// ============ SETTINGS ============
-// --------- Soil Humidity ----------
-#define OPTIMAL_HUM 60               // threshold for all flowers (average)
-#define SOIL_SENSOR_OUTPUT A0
-#define SOIL_SENSOR_PIN 2
-#define MIN_VALUE 240                // minimum value (in water)
-#define MAX_VALUE 710                // maximum value (in air)
+// ============ НАСТРОЙКИ ===========
+// -------- ДАТЧИК ВЛАЖНОСТИ --------
+#define OPTIMAL_HUM 60               // Заначние при котором будет включать пома
+#define SOIL_SENSOR_OUTPUT A0        // Пин на котором находится питание для датчика
+#define SOIL_SENSOR_PIN 2            // Пин с которого будут считываться данные
+#define MIN_VALUE 240                // Мин. значение датчика в воде
+#define MAX_VALUE 710                // Макс. значение датчика на воздухе
 
-// -------------- PUMP --------------
-#define PUMP_PIN 3
+// -------------- ПОМПА -------------
+#define PUMP_PIN 3                   // Пин на котором находится питание для помпы
 
 //-------------- SERIAL -------------
 #define SPEED_SERIAL 9600
-// ============ SETTINGS ============
+// ============ НАСТРОЙКИ ===========
 
 void setup() {
   // Init serial
@@ -32,21 +32,21 @@ void setup() {
 void loop() {
   int value = get_soil_humidity();
 
-  Serial.print("Humidity in soil: ");
+  Serial.print("Влажность в почве: ");
   Serial.print(value);
   Serial.print("%");
-  Serial.print(" is ");
+  Serial.print(" это ");
   
   if (value < OPTIMAL_HUM && value >= 0) {
-    Serial.println("dry");
+    Serial.println("сухо");
     digitalWrite(PUMP_PIN, HIGH);
   }
   else if (value >= OPTIMAL_HUM) {
-    Serial.println("wet");
+    Serial.println("влажно");
     digitalWrite(PUMP_PIN, LOW);
   }
   else {
-    Serial.println("undefined");
+    Serial.println("не определено");
     digitalWrite(PUMP_PIN, LOW);
   }
   Serial.println("============================");
